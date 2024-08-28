@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success text-center">
+        <span class="text-white ">CLIENT LIST</span>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>ContNumber</th>
+              <th>CompName</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Pincode</th>
+              <th>Address</th>
+              <th>EmploStre</th>
+              <th>GstNo</th>
+              <th>RegisNumb</th>
+            </tr>
+          </thead>
+          <tbody>
+           <!--  <tr *ngFor="let client of clients">
+              <td>{{ client.client_id }}</td>
+              <td>{{ client.client_name }}</td>
+              <td>{{ client.client_email }}</td>
+              <td>{{ client.client_phone }}</td>
+              <td>{{ client.client_address }}</td>
+              <td>{{ client.client_status }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="editClient(client.client_id)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteClient(client.client_id)">Delete</button>
+              </td>
+            </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">
+        <span class="text-white">ADD NEW CLIENT</span>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6">
+            <label for="">Person Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">Contact Number</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">Company Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">City</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">State</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">Pincode</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">Address</label>
+            <textarea class="form-control" name="" id=""></textarea>
+          </div>
+          <div class="col-6">
+            <label for="">Employee Strength</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">GstNo</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-6">
+            <label for="">Registration Number</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="row p-2">
+          <div class="col-6 text-center">
+            <button class="btn btn-secondary" >Reset</button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn btn-success" >Save Client</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
