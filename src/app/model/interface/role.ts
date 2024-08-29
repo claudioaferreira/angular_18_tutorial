@@ -10,7 +10,7 @@ export interface IDesignation {
 
 
 export interface APIResponseModel{
-  status: string;
+  result: string;
   message: string;
   data: any;
 }
