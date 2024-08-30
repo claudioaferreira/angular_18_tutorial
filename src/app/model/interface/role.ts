@@ -9,8 +9,20 @@ export interface IDesignation {
 }
 
 
-export interface APIResponseModel{
+export interface APIResponseModel {
   result: string;
   message: string;
   data: any;
+}
+
+
+export interface IEmployee {
+
+  empName: string;
+  empId: string;
+  empCode: string;
+  empEmailId: string;
+  empDesignation: string
+  role: string;
+
 }

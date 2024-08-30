@@ -16,11 +16,32 @@ export class ClientService {
     return this.http.get<APIResponseModel>(environment.API_URL + 'GetAllClients')
   }
 
-  addUpdate(obj:Client): Observable<APIResponseModel> {
+
+
+  addUpdate(obj: Client): Observable<APIResponseModel> {
     return this.http.post<APIResponseModel>(environment.API_URL + 'AddUpdateClient', obj)
   }
-  deleteClientById(id:number): Observable<APIResponseModel> {
-    return this.http.delete<APIResponseModel>(environment.API_URL + 'DeleteEmployeeByEmpId?empId='+id)
+  deleteClientById(id: number): Observable<APIResponseModel> {
+    return this.http.delete<APIResponseModel>(environment.API_URL + 'DeleteEmployeeByEmpId?empId=' + id)
+  }
+
+  /* *-*-*-*-*-*-*-*-*- */
+
+  getAllEmployee(): Observable<APIResponseModel> {
+    return this.http.get<APIResponseModel>(environment.API_URL + 'GetAllEmployee')
+
+  }
+
+  AddUpdateClientProject(obj: Client): Observable<APIResponseModel> {
+    return this.http.post<APIResponseModel>(environment.API_URL + 'AddUpdateClientProject', obj)
+  }
+
+  GetAllClientProjects():Observable<APIResponseModel>{
+    return this.http.get<APIResponseModel>(environment.API_URL + "GetAllClientProjects")
+  }
+
+  deleteClfientById(id: number): Observable<APIResponseModel> {
+    return this.http.delete<APIResponseModel>(environment.API_URL + 'DeleteEmployeeByEmpId?empId=' + id)
   }
 
 }

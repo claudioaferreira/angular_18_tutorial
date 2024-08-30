@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-8">
+    <div class="card">
+      <div class="card-header bg-success text-center">
+        <span class="text-white ">CLIENT LIST</span>
+      </div>
+      <div class="card-body">
+        @if(isLoader()) {
+        <div class="col-12 text-center">
+          <div class="spinner-grow text-secondary" style="width: 3rem; height: 3rem;" role="status"></div>
+        </div>
+        }@else {
+        <table class="table table-bordered text-center">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Project Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Employee Name</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+              @for (project of clientProjectList; track $index) {
+              <tr>
+                <td>{{ project.clientProjectId }}</td>
+                <td>{{ project.projectName }}</td>
+                <td>{{ project.startDate | date:'mediumDate' }}</td>
+                <td>{{ project.expectedEndDate   | date: 'mediumDate'}}</td>
+                <td>{{ project.empName}}</td>
+                 <td>
+                  <button class="btn btn-primary" >Edit</button>
+                  <button class="btn btn-danger" >Delete</button>
+                </td>
+              </tr>
+            }
+
+          </tbody>
+        </table>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-header bg-success">
+        <span class="text-white">Project Name</span>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="projectForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Project Name</label>
+              <input type="text" class="form-control" formControlName="projectName">
+              <div class="text-danger">
+                @if(projectForm.controls['projectName'].touched){
+                  @if(projectForm.controls['projectName'].errors?.['required']) {
+                    <span>This is Required</span>
+                  }
+                  @if(projectForm.controls['projectName'].errors?.['minlength']) {
+                    <span>Min 4 Char Required</span>
+                  }
+                }
+
+              </div>
+              </div>
+              <div class="col-6">
+                <label for="">Start Date</label>
+                <input type="date" class="form-control" formControlName="startDate">
+              </div>
+              <div class="col-6">
+                <label for="">Expected End Date</label>
+                <input type="date" class="form-control" formControlName="expectedEndDate">
+              </div>
+              <div class="col-6">
+                <label for="">Contact Name</label>
+                <input type="text" class="form-control" formControlName="contactPerson">
+              </div>
+              <div class="col-6">
+                <label for="">Contact Mobile</label>
+                <input type="text" class="form-control" formControlName="contactPersonContactNo">
+              </div>
+              <div class="col-6">
+                <label for="">Contact Email</label>
+                <input type="email" class="form-control" formControlName="contactPersonEmailId">
+              </div>
+              <div class="col-6">
+                <label for="">Total Employee Count</label>
+                <input type="text" class="form-control" formControlName="totalEmpWorking">
+              </div>
+              <div class="col-6">
+                <label for="">Project Costing</label>
+                <input type="text-" class="form-control" formControlName="projectCost">
+              </div>
+              <div class="col-12">
+                <label for="">Project Description</label>
+                <textarea class="form-control" formControlName="projectDetails"></textarea>
+              </div>
+              <div class="col-6">
+                <label for="">Select Client:</label>
+                <select class="form-control" name="cars" id="cars" formControlName="clientId">
+                  <option value="" >Select:</option>
+                  @for(client of clientList ; track $index){
+                    <option [value]="client.clientId">{{client.contactPersonName}}</option>
+                  }
+                </select>
+              </div>
+              <div class="col-6">
+                <label for="">Lead By:</label>
+                  <select class="form-control" name="cars" id="cars" formControlName="leadByEmpId">
+                    <option value="" >Select:</option>
+                    @for(employee of employeeList ; track $index){
+                    <option [value]="employee.empId" >{{employee.empName }} - {{employee.empCode }}</option>
+                  }
+                  </select>
+
+              </div>
+            </div>
+            <div class="row p-2">
+              <div class="col-6 text-center">
+                <button class="btn btn-secondary">Reset</button>
+              </div>
+              <div class="col-6 text-center">
+                <button class="btn btn-success" [disabled]="projectForm.invalid" (click)="onSaveProject()">Save Project</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+    </div>
+  </div>

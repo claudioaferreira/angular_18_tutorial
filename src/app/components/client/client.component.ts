@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Client } from '../../model/class/Client';
 import { FormsModule } from '@angular/forms';
 import { ClientService } from '../../services/client.service';
@@ -13,11 +13,11 @@ import { APIResponseModel } from '../../model/interface/role';
   styleUrl: './client.component.css'
 })
 export class ClientComponent implements OnInit {
-  isLoader: boolean = true;
+  isLoader = signal(true);
   // Create a new client object
   clientObj: Client = new Client();
   // Create a list of clients
-  clientList: Client[] = [];
+  clientList = signal<Client[]>([]);
 
   private clientService = inject(ClientService);
 
@@ -30,18 +30,17 @@ export class ClientComponent implements OnInit {
   // Load all clients
   loadClient() {
     this.clientService.getAllClients().subscribe((res: APIResponseModel) => {
-      this.clientList = res.data;
-      this.isLoader = false;
+      this.clientList.set(res.data.empName);
+      this.isLoader.set(false);
     }, (error: any) => {
       console.log(error);
-      this.isLoader = false;
+      this.isLoader.set(false);
     })
   }
 
   // Save client
   onSaveClient() {
     this.clientService.addUpdate(this.clientObj).subscribe((res: APIResponseModel) => {
-
       if (res.result) {
         alert("Client Created Suceessfully");
         this.loadClient();

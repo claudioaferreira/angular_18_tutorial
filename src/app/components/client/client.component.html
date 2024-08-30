@@ -5,7 +5,7 @@
         <span class="text-white ">CLIENT LIST</span>
       </div>
       <div class="card-body">
-        @if(isLoader == true) {
+        @if(isLoader()) {
         <div class="col-12 text-center">
           <div class="spinner-grow text-secondary" style="width: 3rem; height: 3rem;" role="status"></div>
         </div>
@@ -23,7 +23,7 @@
             </tr>
           </thead>
           <tbody>
-            @for (client of clientList; track $index) {
+            @for (client of clientList(); track $index) {
               <tr>
                 <td>{{ client.clientId }}</td>
                 <td>{{ client.companyName }}</td>
